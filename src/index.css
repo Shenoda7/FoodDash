@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Lexend&display=swap");
+body {
+  @apply font-lexend text-black;
+}
