@@ -32,6 +32,16 @@ export default {
       "body-sm": "1rem", // 16px
       "body-xs": "0.875rem", // 14px
     },
+    container: {
+      center: true,
+      screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1240px", // your custom desktop width
+        "2xl": "1320px",
+      },
+    },
     extend: {},
   },
   plugins: [],
