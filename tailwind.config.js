@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import daisyui from "daisyui";
+
 export default {
   content: [
     "./index.html",
@@ -16,7 +18,8 @@ export default {
         light: "rgb(255 239 230 / <alpha-value>)",
       },
       grey: {
-        dark: "rgb(179 179 179 / <alpha-value>)",
+        dark: "rgb(147 147 147 / <alpha-value>)",
+        mid: "rgb(179 179 179 / <alpha-value>)",
         light: "rgb(186 186 186 / <alpha-value>)",
       },
       yellow: "rgb(255 199 0 / <alpha-value>)",
@@ -38,11 +41,20 @@ export default {
         sm: "640px",
         md: "768px",
         lg: "1024px",
-        xl: "1240px", // your custom desktop width
+        xl: "1240px",
         "2xl": "1320px",
       },
     },
+    fontFamily: {
+      lexend: ["Lexend", "sans-serif"],
+    },
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1240px",
+    },
     extend: {},
   },
-  plugins: [],
+  plugins: [daisyui],
 };
