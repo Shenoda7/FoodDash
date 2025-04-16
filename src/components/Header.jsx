@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom"; // Add NavLink import
-import logo from "../assets/logo.svg";
+import logo from "../assets/Logo.svg";
 import btata from "../assets/btata.png";
 import search from "../assets/search.svg";
 

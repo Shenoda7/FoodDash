@@ -48,7 +48,7 @@ const MenuProduct = ({ img, name, rating, numOfRating, price }) => {
           +
         </button>
       </div>
-      <button className="px-9 py-4 bg-orange-dark rounded-full font-semibold text-white ">
+      <button className="px-9 py-4 bg-orange-dark rounded-full font-semibold text-white cursor-pointer">
         ADD TO CART
       </button>
     </div>
