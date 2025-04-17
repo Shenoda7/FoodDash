@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <>
-      <p>This is home page</p>
+      <p className="text-center p-8">This is home page</p>
     </>
   );
 }

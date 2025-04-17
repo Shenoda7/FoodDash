@@ -1,7 +1,7 @@
-import React from "react";
-
-const About = () => {
-  return <div></div>;
-};
-
-export default About;
+export default function About() {
+  return (
+    <>
+      <p className="text-center p-8">This is About page</p>
+    </>
+  );
+}

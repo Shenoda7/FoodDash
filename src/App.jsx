@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./pages/About";
 import Menu from "./pages/Menu.jsx";
-import Cart from "./pages/Cart.jsx";
+import Cart from "./pages/Cart/Cart.jsx";
 import Home from "./pages/Home.jsx";
 
 function App() {

@@ -20,7 +20,8 @@ const MenuProduct = ({ img, name, rating, numOfRating, price }) => {
     gap-5 py-5 px-4 bg-orange-light
     border-dashed border-4 border-orange-mid rounded-b-[2000px] rounded-t-full
     transition-all
-    hover:scale-105
+    hover:scale-[1.03]
+    hover:shadow-xl
     duration-300 ease-in-out"
     >
       <img src={img} alt="product" className="w-[250px] h-[250px]" />

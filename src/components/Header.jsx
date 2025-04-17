@@ -34,16 +34,16 @@ const Header = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/">Menu</Link>
+                <Link to="/menu">Menu</Link>
               </li>
               <li>
-                <Link to="/">Offers</Link>
+                <Link to="/offers">Offers</Link>
               </li>
               <li>
-                <Link to="/">Service</Link>
+                <Link to="/serivce">Service</Link>
               </li>
               <li>
-                <Link to="/">About Us</Link>
+                <Link to="/about">About Us</Link>
               </li>
             </ul>
           </div>
@@ -91,7 +91,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/Service"
+                to="/service"
                 className={({ isActive }) =>
                   isActive
                     ? "text-black"
@@ -103,7 +103,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/AboutUs"
+                to="/about"
                 className={({ isActive }) =>
                   isActive
                     ? "text-black"
