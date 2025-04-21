@@ -1,7 +1,6 @@
 import React from "react";
 import MenuProduct from "./../components/MenuProduct";
 import dish1 from "../assets/image 1.svg";
-import { Footer } from "../components/Footer";
 const Menu = () => {
   return (
     <div className="container flex flex-col items-center justify-center py-12 gap-y-10">
@@ -108,7 +107,6 @@ const Menu = () => {
           price={200}
         />
       </div>
-      <Footer />
     </div>
   );
 };
