@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom"; // Add NavLink import
 import logo from "../assets/Logo.svg";
 import btata from "../assets/btata.png";
-import search from "../assets/search.svg";
+import { TiShoppingCart } from "react-icons/ti";
 
 const Header = () => {
   return (
@@ -40,7 +40,7 @@ const Header = () => {
                 <Link to="/offers">Offers</Link>
               </li>
               <li>
-                <Link to="/serivce">Service</Link>
+                <Link to="/service">Service</Link>
               </li>
               <li>
                 <Link to="/about">About Us</Link>
@@ -116,10 +116,10 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end flex gap-4">
-          <button className="bg-orange-dark p-[15px] rounded-full">
-            <img src={search} alt="" />
-          </button>
-          <img src={btata} alt="" className="w-[50px] h-[50px] rounded-full" />
+          <Link to="/cart" className="bg-orange-dark p-2 rounded-full">
+            <TiShoppingCart className="w-9 h-9 text-white" />
+          </Link>
+          <img src={btata} alt="" className="w-[50px] h-[50px] rounded-full " />
         </div>
       </div>
     </div>
