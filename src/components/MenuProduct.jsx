@@ -1,8 +1,10 @@
 import { Rating } from "@mui/material";
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const MenuProduct = ({ img, name, rating, numOfRating, price }) => {
   const [numOfOrders, setNumOfOrders] = React.useState(0);
+  const navigate = useNavigate();
+
   const addOrder = () => {
     setNumOfOrders((order) => order + 1);
   };
@@ -18,7 +20,8 @@ const MenuProduct = ({ img, name, rating, numOfRating, price }) => {
     gap-5 py-5 px-4 bg-orange-light
     border-dashed border-4 border-orange-mid rounded-b-[2000px] rounded-t-full
     transition-all
-    hover:scale-105
+    hover:scale-[1.03]
+    hover:shadow-xl
     duration-300 ease-in-out"
     >
       <img src={img} alt="product" className="w-[250px] h-[250px]" />
@@ -48,8 +51,14 @@ const MenuProduct = ({ img, name, rating, numOfRating, price }) => {
           +
         </button>
       </div>
-      <button className="px-9 py-4 bg-orange-dark rounded-full font-semibold text-white ">
+      <button className="px-9 py-4 bg-orange-dark rounded-full font-semibold text-white cursor-pointer">
         ADD TO CART
+      </button>
+      <button
+        onClick={() => navigate("/cart")}
+        className="px-9 py-4 bg-orange-dark rounded-full font-semibold text-white cursor-pointer"
+      >
+        Cart Details
       </button>
     </div>
   );
