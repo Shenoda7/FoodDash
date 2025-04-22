@@ -26,7 +26,7 @@ const SITEMAP = [
     links: [copy, followUs, icons],
   },
   {
-    title: "Menu",
+    title: <span className="text-orange-dark">Menu</span>,
     links: [
       <Link to="/">Home</Link>,
       <Link to="/offers">Offers</Link>,
@@ -35,16 +35,16 @@ const SITEMAP = [
     ],
   },
   {
-    title: "Information",
+    title: <span className="text-orange-dark">Information</span>,
     links: [
       <Link to="/menu">Menu</Link>,
-      <Link to="/quailty">Quailty</Link>,
+      <Link to="/quality">Quality</Link>,
       <Link to="/make-a-choice">Make A Choice</Link>,
       <Link to="/fast-delivery">Fast Delivery</Link>,
     ],
   },
   {
-    title: "Contact",
+    title: <span className="text-orange-dark">Contact</span>,
     links: [
       <a href="tel:+1234567890">📞 +1 (234) 567-890</a>,
       <a href="mailto:support@example.com">✉️ support@example.com</a>,
