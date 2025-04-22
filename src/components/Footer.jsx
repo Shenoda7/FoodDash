@@ -1,5 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import logo from "../assets/Logo.svg";
+import { Link } from "react-router-dom";
 
 const currentYear = new Date().getFullYear();
 
@@ -18,66 +19,62 @@ const followUs = (
     Follow us on
   </span>
 );
-
+const icons = <img src="src/assets/social.svg" alt="social icons" />;
 const SITEMAP = [
   {
     title: <img src={logo} alt="logo" className="h-8" />,
-    links: [copy, followUs],
+    links: [copy, followUs, icons],
   },
   {
-    title: "Help Center",
+    title: "Menu",
     links: [
-      <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
-        Discord
-      </a>,
-      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-        Twitter
-      </a>,
-      <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-        GitHub
-      </a>,
-      <a href="/contact">Contact Us</a>,
+      <Link to="/home">Home</Link>,
+      <Link to="/offers">Offers</Link>,
+      <Link to="/service">Service</Link>,
+      <Link to="/about-us">About Us</Link>,
     ],
   },
   {
-    title: "Resources",
+    title: "Information",
     links: [
-      <a href="/blog">Blog</a>,
-      <a href="/newsletter">Newsletter</a>,
-      <a href="/free-products">Free Products</a>,
-      <a href="/affiliate">Affiliate Program</a>,
+      <Link to="/menu">Menu</Link>,
+      <Link to="/quailty">Quailty</Link>,
+      <Link to="/make-a-choice">Make A Choice</Link>,
+      <Link to="/fast-delivery">Fast Delivery</Link>,
     ],
   },
   {
-    title: "Products",
+    title: "Contact",
     links: [
-      <a href="/templates">Templates</a>,
-      <a href="/ui-kits">UI Kits</a>,
-      <a href="/icons">Icons</a>,
-      <a href="/mockups">Mockups</a>,
+      <a href="tel:+1234567890">📞 +1 (234) 567-890</a>,
+      <a href="mailto:support@example.com">✉️ support@example.com</a>,
+      <span>🏢 123 Creative Street, Design City</span>,
+      <span>🕒 Mon - Fri: 9:00 AM - 6:00 PM</span>,
     ],
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="relative w-full bg-gray-100 py-10">
+    <footer
+      className="relative w-full bg-gray-100 py-10 bg-orange-light
+    border-dashed border-t-4 border-orange-mid mt-16"
+    >
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {SITEMAP.map(({ title, links }, key) => (
             <div key={key}>
               <Typography
                 variant="small"
-                color="blue-gray"
-                className="mb-4 font-bold uppercase"
+                className="mb-4 text-[#FF6000] font-black text-body-md uppercase"
               >
                 {title}
               </Typography>
               <ul className="space-y-2">
                 {links.map((link, index) => (
                   <li key={index}>
-                    <Typography as="div" color="blue-gray" className="text-sm">
-                      <span className="inline-block hover:scale-105 transition-transform duration-200">
+                    <Typography as="div" className="text-sm">
+                      <span className="inline-block text-[#939393] hover:scale-105 transition-transform duration-200">
                         {link}
                       </span>
                     </Typography>
