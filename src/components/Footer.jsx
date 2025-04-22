@@ -28,7 +28,7 @@ const SITEMAP = [
   {
     title: "Menu",
     links: [
-      <Link to="/home">Home</Link>,
+      <Link to="/">Home</Link>,
       <Link to="/offers">Offers</Link>,
       <Link to="/service">Service</Link>,
       <Link to="/about-us">About Us</Link>,
