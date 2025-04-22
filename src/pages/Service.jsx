@@ -52,7 +52,7 @@ function Service() {
   return (
     <section className="bg-orange-light py-12 font-lexend">
       <div className="container">
-        <h2 className="text-heading-md text-black mb-8 text-center font-semibold">
+        <h2 className="text-heading-md text-orange-dark font-semibold mb-6 text-center">
           Our Services
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
