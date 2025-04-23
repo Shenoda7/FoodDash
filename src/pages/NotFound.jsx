@@ -1,10 +1,17 @@
 import { useNavigate } from "react-router-dom";
+import pattern from "../assets/food-pattern.png";
 
 const NotFound = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-orange-light p-4 font-lexend">
+    <div
+      className="h-screen flex flex-col items-center justify-center bg-orange-light p-4 font-lexend"
+      style={{
+        backgroundImage: `url(${pattern})`,
+        backgroundRepeat: "repeat",
+      }}
+    >
       <div className="max-w-2xl text-center">
         <h1 className="text-heading-lg font-bold text-orange-dark mb-4">404</h1>
 

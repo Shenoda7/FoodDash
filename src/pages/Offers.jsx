@@ -1,4 +1,5 @@
 import React from "react";
+import pattern from "../assets/food-pattern.png";
 
 const offers = [
   {
@@ -50,7 +51,13 @@ const offers = [
 
 function Offers() {
   return (
-    <section className="bg-orange-light py-12 font-lexend">
+    <section
+      className="bg-orange-light py-12 font-lexend"
+      style={{
+        backgroundImage: `url(${pattern})`,
+        backgroundRepeat: "repeat",
+      }}
+    >
       <div className="container">
         <h2 className="text-heading-md text-orange-dark font-semibold mb-6 text-center">
           Special Offers
