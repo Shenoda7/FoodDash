@@ -8,17 +8,40 @@ import NotFound from "./pages/NotFound.jsx";
 import Footer from "./components/Footer.jsx";
 import Service from "./pages/Service.jsx";
 import Offers from "./pages/Offers.jsx";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
+  const [menu, setMenu] = useState([]);
+  const [cart, setCart] = useState([]);
+  function getMenu() {
+    const url = import.meta.env.VITE_API_URL;
+    axios({ url: `${url}/products`, method: "GET" })
+      .then((res) => {
+        setMenu(res.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching menu:", error);
+      });
+  }
+  useEffect(() => {
+    getMenu();
+  }, []);
   return (
     <>
       <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/menu" element={<Menu />} />
+          <Route
+            path="/menu"
+            element={<Menu menu={menu} cart={cart} setCart={setCart} />}
+          />
           <Route path="/about" element={<About />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={<Cart cart={cart} setCart={setCart} />}
+          />
           <Route path="/service" element={<Service />} />
           <Route path="/offers" element={<Offers />} />
           <Route path="*" element={<NotFound />} />
