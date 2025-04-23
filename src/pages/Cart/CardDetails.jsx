@@ -1,5 +1,6 @@
 import btata from "../../assets/btata.png";
-export default function CardDetails() {
+import { formatUSD } from "../../util/formatter";
+export default function CardDetails({ total }) {
   return (
     <section className="py-12 px-12 sm:py-24 sm:px-24 text-white bg-orange-dark rounded-3xl flex flex-col">
       <div className="flex justify-between items-center gap-16">
@@ -45,15 +46,17 @@ export default function CardDetails() {
       <div className="flex flex-col gap-3 mt-11">
         <div className="flex justify-between items-center">
           <p className="text-body-md font-medium">Subtotal</p>
-          <p className="text-body-md font-medium">$1,668</p>
+          <p className="text-body-md font-medium">{formatUSD(total)}</p>
         </div>
         <div className="flex justify-between items-center">
           <p className="text-body-md font-medium">Shipping</p>
-          <p className="text-body-md font-medium">$0</p>
+          <p className="text-body-md font-medium">$5</p>
         </div>
         <div className="flex justify-between items-center">
           <p className="text-body-md font-medium">Total (Tax incl.)</p>
-          <p className="text-body-md font-medium">$1,672</p>
+          <p className="text-body-md font-medium">
+            {formatUSD(total + total * 0.14 + 5)}
+          </p>
         </div>
       </div>
       <button

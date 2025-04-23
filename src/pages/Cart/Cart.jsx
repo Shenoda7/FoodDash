@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardDetails from "./CardDetails.jsx";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 import img from "../../assets/image 1.svg";
 
-const Cart = () => {
+const Cart = ({ cart, setCart }) => {
+  const [total, setTotal] = useState(0);
+
+  const calculateTotal = () => {
+    let total = 0;
+    cart.forEach((dishData) => {
+      total += dishData.price * dishData.quantity;
+    });
+    setTotal(total);
+  };
+  useEffect(() => {
+    calculateTotal();
+  }, [cart]);
   return (
     <div className="bg-orange-light">
       <div
@@ -22,13 +34,19 @@ const Cart = () => {
 
           <h3 className="text-body-md font-medium">Shopping Item</h3>
           <div className="flex flex-col gap-y-6 w-full">
-            <CartItem img={img} name="Vermicelli Upma" price={300} />
-            <CartItem img={img} name="Vermicelli Upma" price={300} />
-            <CartItem img={img} name="Vermicelli Upma" price={300} />
-            <CartItem img={img} name="Vermicelli Upma" price={300} />
+            {cart.map((dishData) => {
+              return (
+                <CartItem
+                  key={dishData.id}
+                  img={img}
+                  dishData={dishData}
+                  setCart={setCart}
+                />
+              );
+            })}
           </div>
         </div>
-        <CardDetails />
+        <CardDetails total={total} />
       </div>
     </div>
   );

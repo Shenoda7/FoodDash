@@ -1,17 +1,35 @@
 import { Rating } from "@mui/material";
 import React from "react";
-// import { useNavigate } from "react-router-dom";
-const MenuProduct = ({ img, name, rating, numOfRating, price }) => {
+
+const MenuProduct = ({ img, dishData, setCart }) => {
   const [numOfOrders, setNumOfOrders] = React.useState(0);
-  // const navigate = useNavigate();
+
   const addOrder = () => {
     setNumOfOrders((order) => order + 1);
   };
+
   const removeOrder = () => {
     if (numOfOrders > 0) {
       setNumOfOrders((order) => order - 1);
     }
   };
+
+  const addToCart = () => {
+    if (numOfOrders > 0) {
+      setCart((cart) => {
+        const existingItem = cart.find((item) => item.id === dishData.id);
+        if (existingItem) {
+          return cart.map((item) =>
+            item.id === dishData.id
+              ? { ...item, quantity: item.quantity + numOfOrders }
+              : item
+          );
+        }
+        return [...cart, { ...dishData, quantity: numOfOrders }];
+      });
+    }
+  };
+
   return (
     <div
       className="flex flex-col justify-center items-center
@@ -23,17 +41,19 @@ const MenuProduct = ({ img, name, rating, numOfRating, price }) => {
     duration-300 ease-in-out"
     >
       <img src={img} alt="product" className="w-[250px] h-[250px]" />
-      <p className="text-body-lg font-bold w-3/4 text-center">{name}</p>
+      <p className="text-body-lg font-bold w-3/4 text-center">
+        {dishData.name}
+      </p>
       <div className="flex justify-center items-center gap-1">
         <Rating
           name="half-rating-read"
-          defaultValue={rating}
+          defaultValue={dishData.rating}
           precision={0.25}
           readOnly
         />
-        <p className="text-grey-dark text-body-lg">({numOfRating})</p>
+        <p className="text-grey-dark text-body-lg">({dishData.numOfRating})</p>
       </div>
-      <p className="text-heading-sm">₹{price}</p>
+      <p className="text-heading-sm">${dishData.price}</p>
       <div className="flex items-center justify-center  gap-9 text-body-lg">
         <button
           className="bg-orange-dark rounded-full w-12 h-12 text-white"
@@ -57,6 +77,7 @@ const MenuProduct = ({ img, name, rating, numOfRating, price }) => {
       hover:ring-2
       hover:ring-orange-dark
       transition-all duration-300 ease-in-out"
+        onClick={addToCart}
       >
         ADD TO CART
       </button>

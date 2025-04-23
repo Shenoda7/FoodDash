@@ -2,7 +2,7 @@ import React from "react";
 import MenuProduct from "./../components/MenuProduct";
 import dish1 from "../assets/image 1.svg";
 import pattern from "../assets/food-pattern.png";
-const Menu = () => {
+const Menu = ({ menu, setCart }) => {
   return (
     <div
       style={{
@@ -21,102 +21,48 @@ const Menu = () => {
           Indian Dish
         </h2>
         <div className="flex items-center justify-around flex-wrap gap-y-24 w-full">
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
+          {menu.popular?.map((dishData) => {
+            return (
+              <MenuProduct
+                key={dishData.id}
+                img={dish1}
+                dishData={dishData}
+                setCart={setCart}
+              />
+            );
+          })}
         </div>
 
         <h2 className="font-bold text-heading-md text-center pt-24">
           Our <span className="text-orange-mid"> Snacks</span> Menu
         </h2>
         <div className="flex items-center justify-around flex-wrap gap-y-24 w-full">
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
+          {menu.snacks?.map((dishData) => {
+            return (
+              <MenuProduct
+                key={dishData.id}
+                img={dish1}
+                dishData={dishData}
+                setCart={setCart}
+              />
+            );
+          })}
         </div>
 
         <h2 className="font-bold text-heading-md text-center pt-24">
           Our <span className="text-orange-mid"> Regular</span> Menu
         </h2>
         <div className="flex items-center justify-around flex-wrap xl:gap-x-32 gap-y-24 w-full">
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
-          <MenuProduct
-            img={dish1}
-            name="Indian Vegetable Pulao"
-            rating={3.0}
-            numOfRating={55}
-            price={200}
-          />
+          {menu.menu?.map((dishData) => {
+            return (
+              <MenuProduct
+                key={dishData.id}
+                img={dish1}
+                dishData={dishData}
+                setCart={setCart}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
