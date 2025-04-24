@@ -1,6 +1,34 @@
+import { useState } from "react";
 import btata from "../../assets/btata.png";
 import { formatUSD } from "../../util/formatter";
+
 export default function CardDetails({ total }) {
+  const [card, setCard] = useState({
+    name: "",
+    number: "",
+    expiration: "",
+    cvv: "",
+  });
+  const [isValid, setIsValid] = useState("");
+  const checkName = /^[A-Za-z\s'-]{2,26}$/;
+  const checkNumber = /^[0-9]{16}$/;
+  const checkCVV = /^[0-9]{3}$/;
+  const date = new Date();
+
+  const handleCard = () => {
+    if (!checkName.test(card.name)) {
+      setIsValid("invalid Name");
+    } else if (!checkNumber.test(card.number)) {
+      setIsValid("invalid Number");
+    } else if (!checkCVV.test(card.cvv)) {
+      setIsValid("invalid CVV");
+    } else if (new Date(card.expiration) < date) {
+      setIsValid("Card Expired");
+    } else {
+      setIsValid("");
+    }
+  };
+
   return (
     <section className="py-12 px-12 sm:py-24 sm:px-24 text-white bg-orange-dark rounded-3xl flex flex-col">
       <div className="flex justify-between items-center gap-16">
@@ -17,13 +45,18 @@ export default function CardDetails({ total }) {
           <input
             type="text"
             className="w-full text-body-sm text-black py-3 px-4 rounded-md outline-8 border-none outline-orange-mid"
+            placeholder="Ahmed Mamdoh"
+            value={card.name}
+            onChange={(e) => setCard({ ...card, name: e.target.value })}
           ></input>
         </div>
         <div className="flex flex-col gap-1">
           <label>Card Number</label>
           <input
-            type="number"
+            type="text"
             className="w-full text-body-sm text-black py-3 px-4 rounded-md outline-8 border-none outline-orange-mid"
+            value={card.number}
+            onChange={(e) => setCard({ ...card, number: e.target.value })}
           ></input>
         </div>
         <div className="flex flex-col sm:flex-row sm:gap-2 gap-6 items-center">
@@ -32,6 +65,8 @@ export default function CardDetails({ total }) {
             <input
               type="month"
               className="w-full text-body-sm text-black py-3 px-4 rounded-md outline-8 border-none outline-orange-mid"
+              value={card.expiration}
+              onChange={(e) => setCard({ ...card, expiration: e.target.value })}
             ></input>
           </div>
           <div className="flex flex-col gap-1 w-full">
@@ -39,9 +74,31 @@ export default function CardDetails({ total }) {
             <input
               type="number"
               className="w-full text-body-sm text-black py-3 px-4 rounded-md outline-8 border-none outline-orange-mid"
+              value={card.cvv}
+              onChange={(e) => setCard({ ...card, cvv: e.target.value })}
             ></input>
           </div>
         </div>
+        {!isValid ? (
+          ""
+        ) : (
+          <div role="alert" className="alert alert-warning">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 shrink-0 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              />
+            </svg>
+            <span>{isValid}!</span>
+          </div>
+        )}
       </div>
       <div className="flex flex-col gap-3 mt-11">
         <div className="flex justify-between items-center">
@@ -63,6 +120,7 @@ export default function CardDetails({ total }) {
         className="w-full py-5 bg-white text-orange-dark font-bold text-body-md rounded-full mt-12
         hover:bg-transparent hover:text-white hover:ring-2 hover:ring-white
          transition-all duration-300 ease-in-out"
+        onClick={handleCard}
       >
         Checkout
       </button>

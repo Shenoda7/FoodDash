@@ -21,48 +21,60 @@ const Menu = ({ menu, setCart }) => {
           Indian Dish
         </h2>
         <div className="flex items-center justify-around flex-wrap gap-y-24 w-full">
-          {menu.popular?.map((dishData) => {
-            return (
-              <MenuProduct
-                key={dishData.id}
-                img={dish1}
-                dishData={dishData}
-                setCart={setCart}
-              />
-            );
-          })}
+          {menu.popular?.length ? (
+            menu.popular?.map((dishData) => {
+              return (
+                <MenuProduct
+                  key={dishData.id}
+                  img={dish1}
+                  dishData={dishData}
+                  setCart={setCart}
+                />
+              );
+            })
+          ) : (
+            <span className="loading loading-spinner loading-lg text-orange-mid"></span>
+          )}
         </div>
 
         <h2 className="font-bold text-heading-md text-center pt-24">
           Our <span className="text-orange-mid"> Snacks</span> Menu
         </h2>
         <div className="flex items-center justify-around flex-wrap gap-y-24 w-full">
-          {menu.snacks?.map((dishData) => {
-            return (
-              <MenuProduct
-                key={dishData.id}
-                img={dish1}
-                dishData={dishData}
-                setCart={setCart}
-              />
-            );
-          })}
+          {menu.snacks?.length ? (
+            menu.snacks?.map((dishData) => {
+              return (
+                <MenuProduct
+                  key={dishData.id}
+                  img={dish1}
+                  dishData={dishData}
+                  setCart={setCart}
+                />
+              );
+            })
+          ) : (
+            <span className="loading loading-spinner loading-lg  text-orange-mid"></span>
+          )}
         </div>
 
         <h2 className="font-bold text-heading-md text-center pt-24">
           Our <span className="text-orange-mid"> Regular</span> Menu
         </h2>
         <div className="flex items-center justify-around flex-wrap xl:gap-x-32 gap-y-24 w-full">
-          {menu.menu?.map((dishData) => {
-            return (
-              <MenuProduct
-                key={dishData.id}
-                img={dish1}
-                dishData={dishData}
-                setCart={setCart}
-              />
-            );
-          })}
+          {menu.menu?.length ? (
+            menu.menu?.map((dishData) => {
+              return (
+                <MenuProduct
+                  key={dishData.id}
+                  img={dish1}
+                  dishData={dishData}
+                  setCart={setCart}
+                />
+              );
+            })
+          ) : (
+            <span className="loading loading-spinner loading-lg  text-orange-mid"></span>
+          )}
         </div>
       </div>
     </div>
