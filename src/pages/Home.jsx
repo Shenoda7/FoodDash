@@ -3,26 +3,33 @@ import Footer from "../components/Footer";
 export default function Home() {
   return (
     <>
-      <div>
-        <div className="min-h-screen flex items-center justify-evenly bg-[#ffefe8] px-10 py-16">
-          <div className="max-w-lg">
-            <h1 className="font-bold text-heading-sm">
-              <span className="text-orange-mid"> Quick</span> and
-              <span className="text-orange-mid"> Tasty</span> Food
-              <span className="text-orange-mid"> Delivered </span> with
-              <span className="text-orange-mid"> a Dash of </span> speed
+      <div className="bg-orange-light">
+        <div className=" container flex flex-col lg:flex-row gap-16 lg:gap-0 items-center justify-between py-16 lg:py-32">
+          <div className="flex flex-col items-center lg:items-start gap-6">
+            <h1 className="font-black text-heading-lg text-center lg:text-start">
+              <span className="text-orange-dark">Quick </span>
+              and
+              <span className="text-orange-dark"> Tasty</span>
+              <br /> Food
+              <span className="text-orange-dark"> Delivered </span>
+              with
+              <span className="text-orange-dark">
+                &nbsp;a
+                <br />
+                Dash of&nbsp;
+              </span>
+              speed
             </h1>
-            <div className="mt-6 flex flex-col items-start space-y-4">
-              <button className="bg-white hover:bg-orange-mid text-black font-semibold py-3 px-12 rounded-full shadow-md transition duration-300 ease-in">
-                Order Now
-              </button>
-              <button className="bg-white hover:bg-orange-mid text-black font-semibold py-3 px-12 rounded-full shadow-md transition duration-300 ease-in">
-                Track Order
-              </button>
-            </div>
+
+            <button className="bg-orange-mid  text-white hover:text-orange-mid hover:bg-transparent hover:ring-2 hover:ring-orange-mid font-bold text-body-sm py-3 px-20 rounded-full transition duration-300 ease-in-out">
+              Order Now
+            </button>
+            <button className="bg-orange-transparent hover:bg-orange-mid hover:text-white text-orange-mid ring-2 ring-orange-mid font-bold text-body-sm py-3 px-[76px] rounded-full transition duration-300 ease-in-out">
+              Track Order
+            </button>
           </div>
 
-          <div className="w-full max-w-[400px] h-full max-h-[400px] rounded-full overflow-hidden shadow-xl">
+          <div className="w-full max-w-[500px] h-full max-h-[500px] rounded-full overflow-hidden">
             <img
               src={heroImage}
               alt="Hero"
