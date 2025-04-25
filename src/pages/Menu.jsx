@@ -1,0 +1,84 @@
+import React from "react";
+import MenuProduct from "./../components/MenuProduct";
+import dish1 from "../assets/image 1.svg";
+import pattern from "../assets/food-pattern.png";
+const Menu = ({ menu, setCart }) => {
+  return (
+    <div
+      style={{
+        backgroundImage: `url(${pattern})`,
+        backgroundRepeat: "repeat",
+      }}
+      className="bg-orange-light"
+    >
+      <div
+        className="container flex flex-col items-center justify-center py-12 gap-y-10
+      "
+      >
+        <h2 className="font-bold text-heading-sm text-center">
+          Our <span className="text-orange-mid">Best Popular</span>
+          <br />
+          Indian Dish
+        </h2>
+        <div className="flex items-center justify-around flex-wrap gap-y-24 w-full">
+          {menu.popular?.length ? (
+            menu.popular?.map((dishData) => {
+              return (
+                <MenuProduct
+                  key={dishData.id}
+                  img={dish1}
+                  dishData={dishData}
+                  setCart={setCart}
+                />
+              );
+            })
+          ) : (
+            <span className="loading loading-spinner loading-lg text-orange-mid"></span>
+          )}
+        </div>
+
+        <h2 className="font-bold text-heading-md text-center pt-24">
+          Our <span className="text-orange-mid"> Snacks</span> Menu
+        </h2>
+        <div className="flex items-center justify-around flex-wrap gap-y-24 w-full">
+          {menu.snacks?.length ? (
+            menu.snacks?.map((dishData) => {
+              return (
+                <MenuProduct
+                  key={dishData.id}
+                  img={dish1}
+                  dishData={dishData}
+                  setCart={setCart}
+                />
+              );
+            })
+          ) : (
+            <span className="loading loading-spinner loading-lg  text-orange-mid"></span>
+          )}
+        </div>
+
+        <h2 className="font-bold text-heading-md text-center pt-24">
+          Our <span className="text-orange-mid"> Regular</span> Menu
+        </h2>
+        <div className="flex items-center justify-around flex-wrap xl:gap-x-32 gap-y-24 w-full">
+          {menu.menu?.length ? (
+            menu.menu?.map((dishData) => {
+              return (
+                <MenuProduct
+                  key={dishData.id}
+                  img={dish1}
+                  dishData={dishData}
+                  setCart={setCart}
+                />
+              );
+            })
+          ) : (
+            <span className="loading loading-spinner loading-lg  text-orange-mid"></span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Menu;
