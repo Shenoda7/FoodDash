@@ -10,8 +10,8 @@ function AboutUs() {
         backgroundRepeat: "repeat",
       }}
     >
-      <div className="container max-w-4xl text-center">
-        <h2 className="text-heading-md text-orange-dark font-semibold mb-6">
+      <div className="container max-w-4xl">
+        <h2 className="text-heading-md text-orange-dark font-semibold mb-6 text-center">
           About Us
         </h2>
 
