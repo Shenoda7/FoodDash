@@ -10,6 +10,9 @@ import Service from "./pages/Service.jsx";
 import Offers from "./pages/Offers.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import React from "react";
+import Login from "./pages/Login.jsx";
+
 
 function App() {
   const [menu, setMenu] = useState([]);
@@ -44,7 +47,9 @@ function App() {
           />
           <Route path="/service" element={<Service />} />
           <Route path="/offers" element={<Offers />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
+
         </Routes>
         <Footer />
       </BrowserRouter>
