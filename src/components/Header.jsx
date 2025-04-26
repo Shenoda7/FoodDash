@@ -119,7 +119,22 @@ const Header = () => {
           <Link to="/cart" className="bg-orange-dark p-2 rounded-full">
             <TiShoppingCart className="w-9 h-9 text-white" />
           </Link>
-          <img src={btata} alt="" className="w-[50px] h-[50px] rounded-full " />
+          {/* <img src={btata} alt="" className="w-[50px] h-[50px] rounded-full " /> */}
+
+          <Link to="/login">
+            <button className="bg-orange-dark text-white font-semibold text-body-md rounded-lg h-12 px-8">
+              Login
+            </button>
+          </Link>
+
+          <Link to="/signup">
+            <button
+              className="bg-transparent text-orange-dark font-semibold text-body-md rounded-lg h-12 px-8
+            ring-2 ring-orange-dark"
+            >
+              SignUp
+            </button>
+          </Link>
         </div>
       </div>
     </div>
