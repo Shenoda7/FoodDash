@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // For now, just log the form data
+    console.log("Email:", email);
+    console.log("Password:", password);
+    // You can add your real login logic here
+  };
+
   return (
     <div className="flex h-screen">
       {/* Left - Image & Text */}
@@ -13,7 +24,9 @@ const Login = () => {
       >
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white px-8">
           <h1 className="text-5xl font-bold mb-4">Food Dash.</h1>
-          <p className="text-xl text-center">Delivering happiness to your doorstep</p>
+          <p className="text-xl text-center">
+            Delivering happiness to your doorstep
+          </p>
         </div>
       </div>
 
@@ -25,12 +38,18 @@ const Login = () => {
           </h2>
 
           <button className="w-full mb-3 flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-lg hover:bg-gray-100">
-            <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="google" />
+            <img
+              src="https://img.icons8.com/color/16/000000/google-logo.png"
+              alt="google"
+            />
             Login with Google
           </button>
 
           <button className="w-full mb-6 flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-lg hover:bg-gray-100">
-            <img src="https://img.icons8.com/color/16/000000/facebook-new.png" alt="facebook" />
+            <img
+              src="https://img.icons8.com/color/16/000000/facebook-new.png"
+              alt="facebook"
+            />
             Login with Facebook
           </button>
 
@@ -40,29 +59,41 @@ const Login = () => {
             <hr className="flex-grow border-gray-300" />
           </div>
 
-          <form>
-            <label className="block mb-2 text-sm font-medium">Email Address</label>
+          {/* FORM */}
+          <form onSubmit={handleSubmit}>
+            <label className="block mb-2 text-sm font-medium">
+              Email Address
+            </label>
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full mb-4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="your@email.com"
+              required
             />
 
             <label className="block mb-2 text-sm font-medium">Password</label>
             <input
               type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full mb-6 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               placeholder="Enter your password"
+              required
             />
 
-            <button className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition">
+            <button
+              type="submit"
+              className="w-full border text-orange-dark font-semibold py-2 rounded-lg hover:bg-orange-600 transition"
+            >
               Login to Continue
             </button>
           </form>
 
           <p className="text-center text-sm text-gray-600 mt-4">
             Don't have an account?{" "}
-            <a href="#" className="text-orange-500 hover:underline">Sign up</a>
+            <button className="text-orange-500 hover:underline">Sign up</button>
           </p>
         </div>
       </div>
