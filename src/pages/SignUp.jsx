@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import { isEmail } from "../util/validation.js";
+import backgroundImage from "../assets/Log-in-img.jpg";
+import logo from "../assets/Logo.svg";
+import { Link } from "react-router-dom";
+import google from "../assets/google.svg";
+import facebook from "../assets/facebook.svg";
+import { LuEye } from "react-icons/lu";
+import { LuEyeClosed } from "react-icons/lu";
 
 const USER_DATA = {
   email: "",
@@ -10,6 +17,7 @@ const USER_DATA = {
 const SignUp = () => {
   const [user, setUser] = useState(USER_DATA);
   const [error, setError] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,57 +52,66 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex justify-center min-h-screen w-full  bg-orange-light">
       {/* Left side - image and text */}
       <div
-        className="w-1/2 hidden md:block bg-cover bg-center relative"
+        className="w-2/5 hidden lg:block bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092')",
+          backgroundImage: `url(${backgroundImage})`,
         }}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white px-8">
-          <h1 className="text-5xl font-bold mb-4">Food Dash.</h1>
-          <p className="text-xl text-center">
-            Delivering happiness to your doorstep
-          </p>
-        </div>
-      </div>
+      ></div>
 
       {/* Right side - form */}
-      <div className="flex items-center justify-center m-auto bg-orange-light p-8 rounded-xl shadow-xl">
-        <form onSubmit={handleSubmit} className="w-full max-w-md">
-          <label className="block mb-2 text-sm font-medium">Username</label>
-          <input
-            type="text"
-            value={user.username}
-            onChange={(e) => setUser({ ...user, username: e.target.value })}
-            className="w-full mb-4 px-4 py-2 border border-orange-light rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-            placeholder="Ahmed Mamdouh"
-            required
-          />
+      <div className="flex flex-col items-center lg:items-start justify-start w-full lg:w-3/5 gap-14 py-16 px-8 lg:px-32">
+        <img src={logo} alt="Logo" className="" />
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col justify-center items-center lg:items-start gap-11 w-full"
+        >
+          <h1 className="text-heading-xs font-bold">Create Account</h1>
+          <div className="flex flex-col gap-3 ">
+            <label className="text-body-sm text-grey-dark">Username</label>
+            <input
+              type="text"
+              value={user.username}
+              onChange={(e) => setUser({ ...user, username: e.target.value })}
+              className="min-w-72 lg:min-w-96 w-1/2   py-2 text-body-md font-semibold text-black bg-transparent border-b-2 border-grey-light focus:outline-none focus:border-orange-dark"
+              placeholder="Ahmed_Mamdoh"
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-3">
+            <label className="text-body-sm text-grey-dark">Email Address</label>
+            <input
+              type="email"
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              className="min-w-72 lg:min-w-96 w-1/2 py-2 text-body-md font-semibold text-black bg-transparent border-b-2 border-grey-light focus:outline-none focus:border-orange-dark"
+              placeholder="your@email.com"
+              required
+            />
+          </div>
 
-          <label className="block mb-2 text-sm font-medium">
-            Email Address
-          </label>
-          <input
-            type="email"
-            value={user.email}
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
-            className="w-full mb-4 px-4 py-2 border border-orange-light rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-            placeholder="your@email.com"
-            required
-          />
-
-          <label className="block mb-2 text-sm font-medium">Password</label>
-          <input
-            type="password"
-            value={user.password}
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
-            className="w-full mb-4 px-4 py-2 border border-orange-light rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-            placeholder="Enter your password"
-            required
-          />
+          <div className="flex flex-col gap-3">
+            <label className="text-body-sm text-grey-dark">Password</label>
+            <div className="flex justify-between items-center w-full">
+              <input
+                type={isVisible ? "text" : "password"}
+                value={user.password}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                className="min-w-72 lg:min-w-96 w-1/2 py-2 text-body-md font-semibold text-black bg-transparent border-b-2 border-grey-light focus:outline-none focus:border-orange-dark"
+                placeholder="Enter your password"
+                required
+              />
+              <button onClick={() => setIsVisible((visible) => !visible)}>
+                {isVisible ? (
+                  <LuEye className="w-8 h-8" />
+                ) : (
+                  <LuEyeClosed className="w-8 h-8" />
+                )}
+              </button>
+            </div>
+          </div>
 
           {error && (
             <p className="p-5 text-red-500 text-sm text-center">{error}</p>
@@ -102,10 +119,25 @@ const SignUp = () => {
 
           <button
             type="submit"
-            className="w-full mt-4 border text-orange-dark font-semibold py-2 rounded-lg hover:bg-orange-600 transition"
+            className="min-w-72 w-1/2 py-5 px-10 bg-orange-dark rounded-full text-white text-body-md font-bold"
           >
             Sign Up
           </button>
+
+          <p className="text-body-sm">
+            Already have an account ?{" "}
+            <Link className="font-bold text-orange-dark">Log in</Link>
+          </p>
+          <div className=" min-w-72 flex gap-5 justify-center items-center w-4/5 flex-col xl:flex-row">
+            <button className=" flex justify-center items-center gap-2 w-full bg-white py-5 px-14 rounded-xl font-semibold">
+              <img src={google} alt="" />
+              Login With Google
+            </button>
+            <button className="flex justify-center items-center gap-2 w-full bg-white py-5 px-14 rounded-xl font-semibold">
+              <img src={facebook} alt="" />
+              Login With Facebook
+            </button>
+          </div>
         </form>
       </div>
     </div>
