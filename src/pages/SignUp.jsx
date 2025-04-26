@@ -126,7 +126,9 @@ const SignUp = () => {
 
           <p className="text-body-sm">
             Already have an account ?{" "}
-            <Link className="font-bold text-orange-dark">Log in</Link>
+            <Link to="/login" className="font-bold text-orange-dark">
+              Log in
+            </Link>
           </p>
           <div className=" min-w-72 flex gap-5 justify-center items-center w-4/5 flex-col xl:flex-row">
             <button className=" flex justify-center items-center gap-2 w-full bg-white py-5 px-14 rounded-xl font-semibold">
