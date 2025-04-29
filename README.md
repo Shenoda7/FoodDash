@@ -18,7 +18,7 @@
 ## 🛠️ Tech Stack
 
 - **Front-End:** React, Tailwind CSS, JavaScript (ES6+)
-- **Back-End (Planned):** PHP, Laravel
+- **Back-End (Planned):** Node.js
 - **Version Control:** Git, GitHub
 
 ---
