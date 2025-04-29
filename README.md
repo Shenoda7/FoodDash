@@ -29,7 +29,9 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/fooddash.git
+git clone https://github.com/Shenoda7/foodDash.git
+or
+git clone git@github.com:Shenoda7/foodDash.git
 cd fooddash
 
 # Install dependencies
