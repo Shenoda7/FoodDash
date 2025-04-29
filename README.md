@@ -32,7 +32,7 @@
 git clone https://github.com/Shenoda7/foodDash.git
 or
 git clone git@github.com:Shenoda7/foodDash.git
-cd fooddash
+cd foodDash
 
 # Install dependencies
 npm install
