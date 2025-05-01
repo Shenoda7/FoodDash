@@ -26,25 +26,25 @@ const SITEMAP = [
     links: [copy, followUs, icons],
   },
   {
-    title: "Menu",
+    title: <span className="text-orange-dark">Menu</span>,
     links: [
-      <Link to="/home">Home</Link>,
+      <Link to="/">Home</Link>,
       <Link to="/offers">Offers</Link>,
       <Link to="/service">Service</Link>,
       <Link to="/about-us">About Us</Link>,
     ],
   },
   {
-    title: "Information",
+    title: <span className="text-orange-dark">Information</span>,
     links: [
       <Link to="/menu">Menu</Link>,
-      <Link to="/quailty">Quailty</Link>,
+      <Link to="/quality">Quality</Link>,
       <Link to="/make-a-choice">Make A Choice</Link>,
       <Link to="/fast-delivery">Fast Delivery</Link>,
     ],
   },
   {
-    title: "Contact",
+    title: <span className="text-orange-dark">Contact</span>,
     links: [
       <a href="tel:+1234567890">📞 +1 (234) 567-890</a>,
       <a href="mailto:support@example.com">✉️ support@example.com</a>,
@@ -58,7 +58,7 @@ export function Footer() {
   return (
     <footer
       className="relative w-full bg-gray-100 py-10 bg-orange-light
-    border-dashed border-t-4 border-orange-mid mt-16"
+    border-dashed border-t-4 border-orange-mid"
     >
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -88,3 +88,4 @@ export function Footer() {
     </footer>
   );
 }
+export default Footer;
