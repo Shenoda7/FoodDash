@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom"; // Add NavLink import
 import logo from "../assets/Logo.svg";
-import btata from "../assets/btata.png";
+// import btata from "../assets/btata.png";
 import { TiShoppingCart } from "react-icons/ti";
 import { AvatarWithUserDropdown } from "./AvatarWithUserDropdown";
 
