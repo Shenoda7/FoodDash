@@ -11,19 +11,19 @@ export default {
   ],
   theme: {
     colors: {
-      black: "rgb(42 42 42 / <alpha-value>)",
+      black: "rgb(42 42 42 / <alpha-value>)", // #2A2A2A
       orange: {
-        dark: "rgb(255 96 0 / <alpha-value>)",
-        mid: "rgb(255 123 43 / <alpha-value>)",
-        light: "rgb(255 239 230 / <alpha-value>)",
+        dark: "rgb(255 96 0 / <alpha-value>)", // #FF6000
+        mid: "rgb(255 123 43 / <alpha-value>)", // #FF7B2B
+        light: "rgb(255 239 230 / <alpha-value>)", // #FFEFE6
       },
       grey: {
-        dark: "rgb(147 147 147 / <alpha-value>)",
-        mid: "rgb(179 179 179 / <alpha-value>)",
-        light: "rgb(186 186 186 / <alpha-value>)",
+        dark: "rgb(147 147 147 / <alpha-value>)", // #939393
+        mid: "rgb(179 179 179 / <alpha-value>)", // #B3B3B3
+        light: "rgb(186 186 186 / <alpha-value>)", // #BABABA
       },
-      yellow: "rgb(255 199 0 / <alpha-value>)",
-      white: "rgb(255 255 255 / <alpha-value>)",
+      yellow: "rgb(255 199 0 / <alpha-value>)", // #FFC700
+      white: "rgb(255 255 255 / <alpha-value>)", // #FFFFFF
     },
     fontSize: {
       "heading-lg": "3rem", // 48px
