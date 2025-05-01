@@ -1,10 +1,11 @@
 import heroImage from "../assets/Hero-img.svg";
-import Footer from "../components/Footer";
+import item from "../assets/image 1.svg";
+
 export default function Home() {
   return (
     <>
       <div className="bg-orange-light">
-        <div className=" container flex flex-col lg:flex-row gap-16 lg:gap-0 items-center justify-between py-16 lg:py-32">
+        <div className="container flex flex-col lg:flex-row gap-16 lg:gap-0 items-center justify-between py-16 lg:py-32">
           <div className="flex flex-col items-center lg:items-start gap-6">
             <h1 className="font-black text-heading-lg text-center lg:text-start">
               <span className="text-orange-dark">Quick </span>
@@ -35,6 +36,35 @@ export default function Home() {
               alt="Hero"
               className="w-full h-full object-cover"
             />
+          </div>
+        </div>
+      </div>
+
+      {/* ===== menu ===== */}
+      <div className="container flex flex-col lg:flex-row gap-16 lg:gap-0 items-center justify-between py-10 lg:py-32">
+        <div className="flex flex-col items-center lg:items-start gap-6 w-full">
+          <h1 className="font-black text-heading-sm text-left lg:text-start">
+            Our
+            <span className="text-orange-dark"> Best Delivered </span> <br />
+            Indian Dish
+          </h1>
+          <div className="flex w-full lg:flex-row flex-col justify-evenly py-5">
+            {[1, 2, 3].map((_, index) => (
+              <div key={index}>
+                <div
+                  className="border-dashed border-4 border-orange-mid rounded-b-[9999px] rounded-t-full
+                  transition-all
+                  hover:-translate-y-2
+                  hover:shadow-xl
+                  duration-300 ease-in-out"
+                >
+                  <img src={item} alt="product" className="p-5" />
+                </div>
+                <p className="text-center py-14 text-body-lg font-semibold">
+                  indian dish
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
