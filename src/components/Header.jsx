@@ -3,17 +3,18 @@ import { Link, NavLink } from "react-router-dom"; // Add NavLink import
 import logo from "../assets/Logo.svg";
 import btata from "../assets/btata.png";
 import { TiShoppingCart } from "react-icons/ti";
+import { AvatarWithUserDropdown } from "./AvatarWithUserDropdown";
 
 const Header = () => {
   return (
     <div className="navbar bg-orange-light ">
       <div className="container py-2 ">
-        <div className="navbar-start flex gap-4">
+        <div className="navbar-start flex items-center gap-4">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-10 w-10"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -47,7 +48,7 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <Link to="/">
+          <Link className="hidden lg:block" to="/">
             <img src={logo} alt="" />
           </Link>
         </div>
@@ -115,26 +116,19 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end flex gap-4">
+        <div className="navbar-end flex items-center gap-4">
           <Link to="/cart" className="bg-orange-dark p-2 rounded-full">
             <TiShoppingCart className="w-9 h-9 text-white" />
           </Link>
           {/* <img src={btata} alt="" className="w-[50px] h-[50px] rounded-full " /> */}
 
-          <Link to="/login">
+          <Link className="hidden lg:block" to="/login">
             <button className="bg-orange-dark text-white font-semibold text-body-md rounded-lg h-12 px-8">
               Login
             </button>
           </Link>
 
-          <Link to="/signup">
-            <button
-              className="bg-transparent text-orange-dark font-semibold text-body-md rounded-lg h-12 px-8
-            ring-2 ring-orange-dark"
-            >
-              SignUp
-            </button>
-          </Link>
+          <AvatarWithUserDropdown />
         </div>
       </div>
     </div>
