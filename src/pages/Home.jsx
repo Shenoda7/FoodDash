@@ -1,5 +1,6 @@
 import heroImage from "../assets/Hero-img.svg";
 import item from "../assets/image 1.svg";
+import { Footer } from "../components/Footer";
 
 export default function Home() {
   return (
@@ -68,6 +69,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }
