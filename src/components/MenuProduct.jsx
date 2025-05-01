@@ -1,5 +1,6 @@
 import { Rating } from "@mui/material";
 import React from "react";
+import Swal from "sweetalert2";
 
 const MenuProduct = ({ img, dishData, setCart }) => {
   const [numOfOrders, setNumOfOrders] = React.useState(0);
@@ -16,6 +17,13 @@ const MenuProduct = ({ img, dishData, setCart }) => {
 
   const addToCart = () => {
     if (numOfOrders > 0) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Item Added to Cart",
+        showConfirmButton: false,
+        timer: 1200,
+      });
       setCart((cart) => {
         const existingItem = cart.find((item) => item.id === dishData.id);
         if (existingItem) {
@@ -71,11 +79,7 @@ const MenuProduct = ({ img, dishData, setCart }) => {
       </div>
       <button
         className="px-9 py-4 bg-orange-dark rounded-full font-semibold text-white cursor-pointer
-      hover:bg-transparent
-      hover:text-orange-dark
-      hover:ring-inset
-      hover:ring-2
-      hover:ring-orange-dark
+      hover:bg-transparent hover:text-orange-dark hover:ring-inset hover:ring-2 hover:ring-orange-dark
       transition-all duration-300 ease-in-out"
         onClick={addToCart}
       >
