@@ -3,8 +3,6 @@ import { isEmail } from "../util/validation.js";
 import backgroundImage from "../assets/Log-in-img.jpg";
 import logo from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
-import google from "../assets/google.svg";
-import facebook from "../assets/facebook.svg";
 import { LuEye } from "react-icons/lu";
 import { LuEyeClosed } from "react-icons/lu";
 
@@ -130,16 +128,6 @@ const SignUp = () => {
               Log in
             </Link>
           </p>
-          <div className=" min-w-72 flex gap-5 justify-center items-center w-4/5 flex-col xl:flex-row">
-            <button className=" flex justify-center items-center gap-2 w-full bg-white py-5 px-14 rounded-xl font-semibold">
-              <img src={google} alt="" />
-              Login With Google
-            </button>
-            <button className="flex justify-center items-center gap-2 w-full bg-white py-5 px-14 rounded-xl font-semibold">
-              <img src={facebook} alt="" />
-              Login With Facebook
-            </button>
-          </div>
         </form>
       </div>
     </div>
