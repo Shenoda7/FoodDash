@@ -7,9 +7,12 @@ const Menu = ({ menu, setCart }) => {
   const [maxPrice, setMaxPrice] = useState(100);
   const [type, setType] = useState("all");
   function showDishes(menuType) {
-    const dishes = menu[menuType]
+    const dishes = menu
       .filter(
-        (dishData) => dishData.price >= minPrice && dishData.price <= maxPrice
+        (dishData) =>
+          dishData.price >= minPrice &&
+          dishData.price <= maxPrice &&
+          dishData.tag === menuType
       )
       .map((dishData) => {
         return (
@@ -109,7 +112,7 @@ const Menu = ({ menu, setCart }) => {
               Indian Dish
             </h2>
             <div className="flex items-center justify-around flex-wrap gap-y-24 w-full">
-              {menu.popular?.length ? (
+              {menu?.length ? (
                 showDishes("popular")
               ) : (
                 <span className="loading loading-spinner loading-lg text-orange-mid"></span>
@@ -126,7 +129,7 @@ const Menu = ({ menu, setCart }) => {
               Our <span className="text-orange-mid"> Snacks</span> Menu
             </h2>
             <div className="flex items-center justify-around flex-wrap gap-y-24 w-full">
-              {menu.snacks?.length ? (
+              {menu?.length ? (
                 showDishes("snacks")
               ) : (
                 <span className="loading loading-spinner loading-lg  text-orange-mid"></span>
@@ -143,7 +146,7 @@ const Menu = ({ menu, setCart }) => {
               Our <span className="text-orange-mid"> Regular</span> Menu
             </h2>
             <div className="flex items-center justify-around flex-wrap xl:gap-x-32 gap-y-24 w-full">
-              {menu.menu?.length ? (
+              {menu?.length ? (
                 showDishes("menu")
               ) : (
                 <span className="loading loading-spinner loading-lg  text-orange-mid"></span>
