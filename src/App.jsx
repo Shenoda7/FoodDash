@@ -13,10 +13,12 @@ import axios from "axios";
 import React from "react";
 import Login from "./pages/Login.jsx";
 import SignUp from "./pages/SignUp.jsx";
+import AdminPanel from "./pages/Admin/AdminPanel.jsx";
 
 function App() {
   const [menu, setMenu] = useState([]);
   const [cart, setCart] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
   function getMenu() {
     const url = import.meta.env.VITE_API_URL;
     axios({ url: `${url}/products`, method: "GET" })
@@ -29,13 +31,17 @@ function App() {
   }
   useEffect(() => {
     getMenu();
-  }, []);
+  }, [isUpdate]);
   return (
     <>
       <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route
+            path="/admin"
+            element={<AdminPanel menu={menu} setIsUpdate={setIsUpdate} />}
+          ></Route>
           <Route
             path="/menu"
             element={<Menu menu={menu} cart={cart} setCart={setCart} />}
