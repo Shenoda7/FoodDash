@@ -1,5 +1,6 @@
 import heroImage from "../assets/Hero-img.svg";
 import item from "../assets/image 1.svg";
+import MenuProduct from "./../components/MenuProduct";
 
 export default function Home() {
   return (
@@ -48,11 +49,11 @@ export default function Home() {
             <span className="text-orange-dark"> Best Delivered </span> <br />
             Indian Dish
           </h1>
-          <div className="flex w-full lg:flex-row flex-col justify-evenly py-5">
+          <div className="flex w-full lg:flex-row items-center flex-col lg:justify-evenly border-max py-5">
             {[1, 2, 3].map((_, index) => (
               <div key={index}>
                 <div
-                  className="border-dashed border-4 border-orange-mid rounded-b-[9999px] rounded-t-full
+                  className="border-dashed border-4 border-orange-mid w-max rounded-b-[9999px] rounded-t-full
                   transition-all
                   hover:-translate-y-2
                   hover:shadow-xl
@@ -65,6 +66,17 @@ export default function Home() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+      {/* regular menu */}
+      <div className="container flex flex-col lg:flex-row gap-16 lg:gap-0 items-center justify-between py-10 lg:py-32">
+        <div className="flex flex-col items-center lg:items-start gap-6 w-full">
+          <h1 className="font-black text-heading-sm text-left lg:text-start">
+            Our <span className="text-orange-dark">Regular</span> Menu
+          </h1>
+          <div className="flex w-full lg:flex-row flex-col justify-evenly py-5">
+            {/* <MenuProduct /> */}
           </div>
         </div>
       </div>
