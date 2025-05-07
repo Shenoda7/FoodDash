@@ -30,13 +30,49 @@ export default function Home() {
               Track Order
             </button>
           </div>
-
           <div className="w-full max-w-[500px] h-full max-h-[500px] rounded-full overflow-hidden">
             <img
               src={heroImage}
               alt="Hero"
               className="w-full h-full object-cover"
             />
+          </div>
+        </div>
+        <div className="bg-white w-3/4 mx-auto p-6 flex justify-between rounded-lg shadow-md">
+          <div className="flex w-1/4 items-center space-x-2">
+            <img
+              src="/src/assets/fast-delivery.svg"
+              alt="Item 1"
+              className="w-12 h-12 object-cover rounded"
+            />
+            <div>
+              <h4 className="font-semibold">Fast Delivery</h4>
+              <p className="text-sm text-gray-600">Deliver within 30 minutes</p>
+            </div>
+          </div>
+
+          <div className="flex w-1/4 items-center space-x-2">
+            <img
+              src="/src/assets/fresh.svg"
+              alt="Item 2"
+              className="w-12 h-12 object-cover rounded"
+            />
+            <div>
+              <h4 className="font-semibold">Fresh Food</h4>
+              <p className="text-sm text-gray-600">100% fresh</p>
+            </div>
+          </div>
+
+          <div className="flex w-1/4 items-center space-x-2">
+            <img
+              src="/src/assets/fresh.svg"
+              alt="Item 3"
+              className="w-12 h-12 object-cover rounded"
+            />
+            <div>
+              <h4 className="font-semibold">Free Delivery</h4>
+              <p className="text-sm text-gray-600">No cost for delivery</p>
+            </div>
           </div>
         </div>
       </div>
