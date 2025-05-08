@@ -125,7 +125,9 @@ const Menu = ({ menu, setCart }) => {
 
         {type === "all" || type === "snacks" ? (
           <>
-            <h2 className="font-bold text-heading-md text-center pt-24">
+            <h2
+              className={`font-bold text-heading-md text-center ${type !== "snacks" ? "pt-24" : null}`}
+            >
               Our <span className="text-orange-mid"> Snacks</span> Menu
             </h2>
             <div className="flex items-center justify-around flex-wrap gap-y-24 w-full">
@@ -142,7 +144,9 @@ const Menu = ({ menu, setCart }) => {
 
         {type === "all" || type === "regular menu" ? (
           <>
-            <h2 className="font-bold text-heading-md text-center pt-24">
+            <h2
+              className={`font-bold text-heading-md text-center ${type !== "regular menu" ? "pt-24" : null}`}
+            >
               Our <span className="text-orange-mid"> Regular</span> Menu
             </h2>
             <div className="flex items-center justify-around flex-wrap xl:gap-x-32 gap-y-24 w-full">

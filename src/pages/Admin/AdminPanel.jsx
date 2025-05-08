@@ -43,11 +43,14 @@ export default function TransactionsTable({ menu, setIsUpdate }) {
             method: "POST",
             url: `${URL}/products/`,
             data: newDish,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           });
           console.log(res.data);
           setIsAdding(false);
         } catch (error) {
-          console.log(error);
+          console.log(error.message);
         }
         Swal.fire("Added!", "", "success");
         setIsUpdate(Date.now());
@@ -194,7 +197,7 @@ export default function TransactionsTable({ menu, setIsUpdate }) {
                 .filter(
                   (dish) =>
                     dish.name.toLowerCase().includes(search.toLowerCase()) ||
-                    dish.tag.toLowerCase().includes(search.toLowerCase()),
+                    dish.tag.toLowerCase().includes(search.toLowerCase())
                 )
                 .map((dish) => {
                   return <TableElement dish={dish} setIsUpdate={setIsUpdate} />;

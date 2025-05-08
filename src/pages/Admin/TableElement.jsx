@@ -29,14 +29,18 @@ const TableElement = ({ dish, setIsUpdate }) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         try {
-          await axios({
+          const res = await axios({
             method: "put",
-            url: `${URL}/products/${dish.id}`,
+            url: `${URL}/products/${dish._id}`,
             data: updatedDish,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           });
+          console.log(res.data);
           setIsEdit(false);
         } catch (error) {
-          console.log(error);
+          console.log(error.message);
         }
         Swal.fire("Saved!", "", "success");
         setIsUpdate(Date.now());
@@ -64,11 +68,14 @@ const TableElement = ({ dish, setIsUpdate }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await axios({
+          const res = await axios({
             method: "delete",
-            url: `${URL}/products/${dish.id}`,
+            url: `${URL}/products/${dish._id}`,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           });
-
+          console.log(res.data);
           Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
@@ -94,9 +101,9 @@ const TableElement = ({ dish, setIsUpdate }) => {
         <Typography
           variant="small"
           color="blue-gray"
-          className="font-normal text-body-md"
+          className="font-normal text-body-xs"
         >
-          {dish.id}
+          {dish._id}
         </Typography>
       </td>
       <td className={classes}>

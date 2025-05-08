@@ -49,7 +49,7 @@ const MenuProduct = ({ img, dishData, setCart }) => {
     duration-300 ease-in-out"
     >
       <img src={img} alt="product" className="w-[250px] h-[250px]" />
-      <p className="text-body-lg font-bold w-3/4 text-center">
+      <p className="text-body-md font-bold text-center whitespace-nowrap">
         {dishData.name}
       </p>
       <div className="flex justify-center items-center gap-1">
