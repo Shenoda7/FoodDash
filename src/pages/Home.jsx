@@ -1,6 +1,6 @@
 import heroImage from "../assets/Hero-img.svg";
 import item from "../assets/image 1.svg";
-import MenuProduct from "./../components/MenuProduct";
+import Offers from "../components/Offers";
 
 export default function Home() {
   return (
@@ -116,6 +116,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Offers />
     </>
   );
 }
