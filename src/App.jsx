@@ -37,7 +37,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home menu={menu} />} />
           <Route
             path="/admin"
             element={<AdminPanel menu={menu} setIsUpdate={setIsUpdate} />}
