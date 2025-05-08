@@ -53,7 +53,7 @@ const SignUp = () => {
     <div className="flex justify-center min-h-screen w-full  bg-orange-light">
       {/* Left side - image and text */}
       <div
-        className="w-2/5 hidden lg:block bg-cover bg-center"
+        className="w-3/4 hidden lg:block bg-cover bg-center rounded-md"
         style={{
           backgroundImage: `url(${backgroundImage})`,
         }}
