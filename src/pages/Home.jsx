@@ -1,10 +1,27 @@
 import heroImage from "../assets/Hero-img.svg";
-import item from "../assets/image 1.svg";
-import Offers from "../components/Offers";
+import dishImg from "../assets/image 1.svg";
+import fastDelivery from "../assets/fast-delivery.svg";
+import fresh from "../assets/fresh.svg";
+import freeDelivery from "../assets/freeDelivery.svg";
+import HomeProduct from "../components/HomeProduct";
+import { Rerousel } from "rerousel";
+import star from "../assets/Star 1.svg";
+import { useRef } from "react";
+import pattern from "../assets/food-pattern.png";
+import { Link } from "react-router-dom";
+import offer1 from "../assets/offer 1.svg";
+import offer2 from "../assets/offer 2.svg";
+import offer3 from "../assets/offer 3.svg";
 
-export default function Home() {
+export default function Home({ menu }) {
+  const itemRef = useRef(null);
   return (
-    <>
+    <div
+      style={{
+        backgroundImage: `url(${pattern})`,
+        backgroundRepeat: "repeat",
+      }}
+    >
       <div className="bg-orange-light">
         <div className="container flex flex-col lg:flex-row gap-16 lg:gap-0 items-center justify-between py-16 lg:py-32">
           <div className="flex flex-col items-center lg:items-start gap-6">
@@ -38,85 +55,136 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="bg-white w-3/4 mx-auto p-6 flex justify-between rounded-lg shadow-md">
-          <div className="flex w-1/4 items-center space-x-2">
-            <img
-              src="/src/assets/fast-delivery.svg"
-              alt="Item 1"
-              className="w-12 h-12 object-cover rounded"
-            />
-            <div>
-              <h4 className="font-semibold">Fast Delivery</h4>
-              <p className="text-sm text-gray-600">Deliver within 30 minutes</p>
+        <div className=" w-full sm:px-24 translate-y-[50%]">
+          <div className="bg-white  py-9 px-6 flex flex-wrap gap-y-9 justify-evenly rounded-3xl shadow-md">
+            <div className="flex items-center gap-x-6">
+              <img src={fastDelivery} alt="Item 1" className="w-24 h-24" />
+              <div>
+                <h4 className="font-bold text-heading-xs">Fast Delivery</h4>
+                <p className="text-body-sm font-medium text-grey-dark w-48">
+                  Promise To Deliver Within 30 Mins
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="flex w-1/4 items-center space-x-2">
-            <img
-              src="/src/assets/fresh.svg"
-              alt="Item 2"
-              className="w-12 h-12 object-cover rounded"
-            />
-            <div>
-              <h4 className="font-semibold">Fresh Food</h4>
-              <p className="text-sm text-gray-600">100% fresh</p>
+            <div className="flex items-center gap-x-6">
+              <img src={fresh} alt="Item 1" className="w-24 h-24" />
+              <div>
+                <h4 className="font-bold text-heading-xs">Fresh Food</h4>
+                <p className="text-body-sm font-medium text-grey-dark w-56">
+                  Your Food Will Be Delivered 100% Fresh To Your Home.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="flex w-1/4 items-center space-x-2">
-            <img
-              src="/src/assets/fresh.svg"
-              alt="Item 3"
-              className="w-12 h-12 object-cover rounded"
-            />
-            <div>
-              <h4 className="font-semibold">Free Delivery</h4>
-              <p className="text-sm text-gray-600">No cost for delivery</p>
+            <div className="flex items-center gap-x-6">
+              <img src={freeDelivery} alt="Item 1" className="w-24 h-24" />
+              <div>
+                <h4 className="font-bold text-heading-xs">Free Delivery</h4>
+                <p className="text-body-sm font-medium text-grey-dark w-60">
+                  Your Food Delivery Is Absolutely Free. No Cost Just Order
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* ===== menu ===== */}
-      <div className="container flex flex-col lg:flex-row gap-16 lg:gap-0 items-center justify-between py-10 lg:py-32">
-        <div className="flex flex-col items-center lg:items-start gap-6 w-full">
-          <h1 className="font-black text-heading-sm text-left lg:text-start">
-            Our
-            <span className="text-orange-dark"> Best Delivered </span> <br />
-            Indian Dish
-          </h1>
-          <div className="flex w-full lg:flex-row items-center flex-col lg:justify-evenly border-max py-5">
-            {[1, 2, 3].map((_, index) => (
-              <div key={index}>
-                <div
-                  className="border-dashed border-4 border-orange-mid w-max rounded-b-[9999px] rounded-t-full
-                  transition-all
-                  hover:-translate-y-2
-                  hover:shadow-xl
-                  duration-300 ease-in-out"
-                >
-                  <img src={item} alt="product" className="p-5" />
-                </div>
-                <p className="text-center py-14 text-body-lg font-semibold">
-                  indian dish
-                </p>
+      <div className="container flex flex-col lg:flex-row gap-16 lg:gap-0 items-center justify-between  pt-72 lg:pt-48 pb-14">
+        <div className="flex flex-col items-center lg:items-start gap-y-16 w-full">
+          <div className="flex flex-col lg:flex-row gap-y-10 w-full justify-between items-center">
+            <h2 className="font-bold text-heading-lg lg:text-start text-center">
+              Our
+              <span className="text-orange-dark"> Best Delivered </span> <br />
+              Indian Dish
+            </h2>
+            <p className="text-body-md text-grey-mid w-4/5 lg:w-2/5">
+              It’s Not Just About Bringing You Good Food From Restaurants, We
+              Deliver You Experience
+            </p>
+          </div>
+          <div className="flex w-full gap-y-16 lg:flex-row items-center flex-col justify-evenly py-5">
+            {menu?.length ? (
+              menu
+                .filter((dish) => dish.tag === "popular")
+                .slice(0, 3)
+                .map((dish) => (
+                  <HomeProduct key={dish.id} img={dishImg} name={dish.name} />
+                ))
+            ) : (
+              <span className="loading loading-spinner loading-lg text-orange-mid"></span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/*Carousel*/}
+      <div className="w-full bg-orange-light py-7 flex justify-center">
+        {menu.length > 0 ? (
+          <Rerousel itemRef={itemRef} interval={2000}>
+            {menu.map((dish) => (
+              <div
+                key={dish.id}
+                ref={itemRef}
+                className="flex justify-center items-center gap-x-6 md:w-[30rem] w-full"
+              >
+                <img src={star} alt="star" className="w-12 h-12" />
+                <h3 className="text-body-lg font-bold">{dish.name}</h3>
               </div>
             ))}
-          </div>
-        </div>
+          </Rerousel>
+        ) : (
+          <h3 className="text-heading-sm font-medium">Loading...</h3>
+        )}
       </div>
+
       {/* regular menu */}
-      <div className="container flex flex-col lg:flex-row gap-16 lg:gap-0 items-center justify-between py-10 lg:py-32">
-        <div className="flex flex-col items-center lg:items-start gap-6 w-full">
-          <h1 className="font-black text-heading-sm text-left lg:text-start">
-            Our <span className="text-orange-dark">Regular</span> Menu
-          </h1>
-          <div className="flex w-full lg:flex-row flex-col justify-evenly py-5">
-            {/* <MenuProduct /> */}
+      <div className="container flex flex-col lg:flex-row gap-16 lg:gap-0 items-center justify-between  pt-72 lg:pt-48 pb-14">
+        <div className="flex flex-col items-center lg:items-start gap-y-16 w-full">
+          <div className="flex flex-col lg:flex-row gap-y-10 w-full justify-between items-center">
+            <div className="flex flex-col gap-y-8">
+              <h2 className="font-bold text-heading-lg lg:text-start text-center">
+                Our
+                <span className="text-orange-dark"> Regular </span>
+                Menu
+              </h2>
+              <p className="text-body-md text-grey-mid ">
+                There Are Our Regular Menus.
+                <br /> You Can Order Anything You Like.
+              </p>
+            </div>
+            <Link
+              to="/menu"
+              className="text-body-md lg:w-auto w-3/5 text-center font-medium text-white bg-orange-mid py-4 px-8 rounded-full"
+            >
+              See All
+            </Link>
+          </div>
+          <div className="flex w-full gap-y-16 lg:flex-row items-center flex-col justify-evenly py-5">
+            {menu?.length ? (
+              menu
+                .filter((dish) => dish.tag === "menu")
+                .slice(0, 3)
+                .map((dish) => (
+                  <HomeProduct key={dish.id} img={dishImg} name={dish.name} />
+                ))
+            ) : (
+              <span className="loading loading-spinner loading-lg text-orange-mid"></span>
+            )}
           </div>
         </div>
       </div>
-      <Offers />
-    </>
+
+      {/* Offers */}
+      <div className="flex py-16 gap-6 flex-col xl:flex-row items-center justify-center">
+        <img src={offer1} alt="Offer 1" />
+
+        <div className="flex flex-col gap-y-6">
+          <img src={offer2} alt="Offer 2" />
+          <img src={offer3} alt="Offer 3" />
+        </div>
+      </div>
+    </div>
   );
 }
