@@ -1,14 +1,16 @@
 import { useState } from "react";
 import btata from "../../assets/btata.png";
 import { formatUSD } from "../../util/formatter";
+import Swal from "sweetalert2";
 
-export default function CardDetails({ total }) {
-  const [card, setCard] = useState({
-    name: "",
-    number: "",
-    expiration: "",
-    cvv: "",
-  });
+const cardData = {
+  name: "",
+  number: "",
+  expiration: "",
+  cvv: "",
+};
+export default function CardDetails({ total, setCart }) {
+  const [card, setCard] = useState(cardData);
   const [isValid, setIsValid] = useState("");
   const checkName = /^[A-Za-z\s'-]{2,26}$/;
   const checkNumber = /^[0-9]{16}$/;
@@ -22,10 +24,20 @@ export default function CardDetails({ total }) {
       setIsValid("invalid Number");
     } else if (!checkCVV.test(card.cvv)) {
       setIsValid("invalid CVV");
+    } else if (!card.expiration) {
+      setIsValid("Card Expiration is required");
     } else if (new Date(card.expiration) < date) {
       setIsValid("Card Expired");
     } else {
+      Swal.fire({
+        title: "Order Placed!",
+        icon: "success",
+        timer: 1000,
+        showConfirmButton: false,
+      });
       setIsValid("");
+      setCard(cardData);
+      setCart([]);
     }
   };
 
@@ -55,8 +67,13 @@ export default function CardDetails({ total }) {
           <input
             type="text"
             className="w-full text-body-sm text-black py-3 px-4 rounded-md outline-8 border-none outline-orange-mid"
-            value={card.number}
-            onChange={(e) => setCard({ ...card, number: e.target.value })}
+            value={card.number
+              .replace(/(\d{4})/g, "$1 ")
+              .replace(/\s+/g, " ")
+              .trim()}
+            onChange={(e) =>
+              setCard({ ...card, number: e.target.value.replace(/\s/g, "") })
+            }
           ></input>
         </div>
         <div className="flex flex-col sm:flex-row sm:gap-2 gap-6 items-center">

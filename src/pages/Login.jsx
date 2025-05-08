@@ -6,14 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { LuEye } from "react-icons/lu";
 import { LuEyeClosed } from "react-icons/lu";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
 
 const USER_DATA = {
   email: "",
   password: "",
 };
 
-const Login = () => {
+const Login = ({ setIsLogin }) => {
   const [user, setUser] = useState(USER_DATA);
   const [error, setError] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -52,12 +51,11 @@ const Login = () => {
       },
     })
       .then((res) => {
+        const token = res.data.data;
+        localStorage.setItem("token", token);
+        setIsLogin(true);
         setUser(USER_DATA);
         navigate("/");
-        console.log(res);
-        const token = res.data.data;
-        const decoded = jwtDecode(token);
-        console.log(decoded);
       })
       .catch((error) => {
         console.log(error);

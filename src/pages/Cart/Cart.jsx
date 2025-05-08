@@ -46,7 +46,7 @@ const Cart = ({ cart, setCart }) => {
             })}
           </div>
         </div>
-        <CardDetails total={total} />
+        <CardDetails total={total} setCart={setCart} />
       </div>
     </div>
   );

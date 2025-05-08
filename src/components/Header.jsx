@@ -4,8 +4,9 @@ import logo from "../assets/Logo.svg";
 // import btata from "../assets/btata.png";
 import { TiShoppingCart } from "react-icons/ti";
 import { AvatarWithUserDropdown } from "./AvatarWithUserDropdown";
+import { jwtDecode } from "jwt-decode";
 
-const Header = () => {
+const Header = ({ isLogin, setIsLogin }) => {
   return (
     <div className="navbar bg-orange-light z-10 relative">
       <div className="container py-2 ">
@@ -121,14 +122,19 @@ const Header = () => {
             <TiShoppingCart className="w-9 h-9 text-white" />
           </Link>
           {/* <img src={btata} alt="" className="w-[50px] h-[50px] rounded-full " /> */}
+          {isLogin ? (
+            <p className=" text-black font-semibold text-body-md">
+              Hi, {jwtDecode(localStorage.getItem("token")).username}
+            </p>
+          ) : (
+            <Link className="hidden lg:block" to="/login">
+              <button className="bg-orange-dark text-white font-semibold text-body-md rounded-lg h-12 px-8">
+                Login
+              </button>
+            </Link>
+          )}
 
-          <Link className="hidden lg:block" to="/login">
-            <button className="bg-orange-dark text-white font-semibold text-body-md rounded-lg h-12 px-8">
-              Login
-            </button>
-          </Link>
-
-          <AvatarWithUserDropdown />
+          <AvatarWithUserDropdown isLogin={isLogin} setIsLogin={setIsLogin} />
         </div>
       </div>
     </div>

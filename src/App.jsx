@@ -14,11 +14,16 @@ import React from "react";
 import Login from "./pages/Login.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import AdminPanel from "./pages/Admin/AdminPanel.jsx";
+import { jwtDecode } from "jwt-decode";
 
 function App() {
   const [menu, setMenu] = useState([]);
   const [cart, setCart] = useState([]);
   const [isUpdate, setIsUpdate] = useState(false);
+  const [isInitialRender, setIsInitialRender] = useState(true);
+  const [isLogin, setIsLogin] = useState(
+    localStorage.getItem("token") ? true : false
+  );
   function getMenu() {
     const url = import.meta.env.VITE_API_URL;
     axios({ url: `${url}/products`, method: "GET" })
@@ -29,13 +34,60 @@ function App() {
         console.error("Error fetching menu:", error);
       });
   }
+  function getCart() {
+    const url = import.meta.env.VITE_API_URL;
+    axios({
+      url: `${url}/users/cart`,
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => {
+        setCart(res.data.data);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  }
+
+  function updateCart() {
+    const url = import.meta.env.VITE_API_URL;
+    axios({
+      url: `${url}/users/cart`,
+      method: "PUT",
+      data: {
+        cart: cart,
+        id: jwtDecode(localStorage.getItem("token")).id,
+      },
+    })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  }
+
   useEffect(() => {
     getMenu();
   }, [isUpdate]);
+
+  useEffect(() => {
+    getCart();
+  }, [isLogin]);
+
+  useEffect(() => {
+    if (isInitialRender) {
+      setIsInitialRender(false);
+      return;
+    }
+    updateCart();
+  }, [cart]);
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header isLogin={isLogin} setIsLogin={setIsLogin} />
         <Routes>
           <Route path="/" element={<Home menu={menu} />} />
           <Route
@@ -53,7 +105,7 @@ function App() {
           />
           <Route path="/service" element={<Service />} />
           <Route path="/offers" element={<Offers />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
