@@ -7,7 +7,7 @@ import { AvatarWithUserDropdown } from "./AvatarWithUserDropdown";
 
 const Header = () => {
   return (
-    <div className="navbar bg-orange-light ">
+    <div className="navbar bg-orange-light z-10 relative">
       <div className="container py-2 ">
         <div className="navbar-start flex items-center gap-4">
           <div className="dropdown">
