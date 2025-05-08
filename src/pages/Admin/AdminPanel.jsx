@@ -39,11 +39,12 @@ export default function TransactionsTable({ menu, setIsUpdate }) {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         try {
-          await axios({
-            method: "post",
+          const res = await axios({
+            method: "POST",
             url: `${URL}/products/`,
             data: newDish,
           });
+          console.log(res.data);
           setIsAdding(false);
         } catch (error) {
           console.log(error);
@@ -193,7 +194,7 @@ export default function TransactionsTable({ menu, setIsUpdate }) {
                 .filter(
                   (dish) =>
                     dish.name.toLowerCase().includes(search.toLowerCase()) ||
-                    dish.tag.toLowerCase().includes(search.toLowerCase())
+                    dish.tag.toLowerCase().includes(search.toLowerCase()),
                 )
                 .map((dish) => {
                   return <TableElement dish={dish} setIsUpdate={setIsUpdate} />;

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { isEmail } from "../util/validation.js";
 import backgroundImage from "../assets/Log-in-img.jpg";
 import logo from "../assets/Logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LuEye } from "react-icons/lu";
 import { LuEyeClosed } from "react-icons/lu";
+import axios from "axios";
 
 const USER_DATA = {
   email: "",
@@ -16,6 +17,7 @@ const SignUp = () => {
   const [user, setUser] = useState(USER_DATA);
   const [error, setError] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,9 +46,23 @@ const SignUp = () => {
 
     // If everything is valid
     setError(false);
-    console.log("Form submitted:", user);
-    // Optionally reset form:
-    // setUser(USER_DATA);
+    const url = import.meta.env.VITE_API_URL;
+    axios({
+      url: `${url}/auth/signup`,
+      method: "POST",
+      data: {
+        username: user.username,
+        password: user.password,
+        email: user.email,
+      },
+    })
+      .then(() => {
+        setUser(USER_DATA);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

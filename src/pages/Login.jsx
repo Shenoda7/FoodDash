@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import { isEmail } from "../util/validation.js";
 import backgroundImage from "../assets/Log-in-img.jpg";
 import logo from "../assets/Logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LuEye } from "react-icons/lu";
 import { LuEyeClosed } from "react-icons/lu";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const USER_DATA = {
   email: "",
   password: "",
 };
 
-const SignUp = () => {
+const Login = () => {
   const [user, setUser] = useState(USER_DATA);
   const [error, setError] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,9 +41,27 @@ const SignUp = () => {
 
     // If everything is valid
     setError(false);
-    console.log("Form submitted:", user);
-    // Optionally reset form:
-    // setUser(USER_DATA);
+
+    const url = import.meta.env.VITE_API_URL;
+    axios({
+      url: `${url}/auth/login`,
+      method: "POST",
+      data: {
+        email: user.email,
+        password: user.password,
+      },
+    })
+      .then((res) => {
+        setUser(USER_DATA);
+        navigate("/");
+        console.log(res);
+        const token = res.data.data;
+        const decoded = jwtDecode(token);
+        console.log(decoded);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -135,4 +156,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;

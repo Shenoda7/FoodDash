@@ -23,7 +23,7 @@ function App() {
     const url = import.meta.env.VITE_API_URL;
     axios({ url: `${url}/products`, method: "GET" })
       .then((res) => {
-        setMenu(res.data);
+        setMenu(res.data.data);
       })
       .catch((error) => {
         console.error("Error fetching menu:", error);
