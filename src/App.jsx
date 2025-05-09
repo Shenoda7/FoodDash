@@ -74,6 +74,9 @@ function App() {
   }, [isUpdate]);
 
   useEffect(() => {
+    if (!isLogin) {
+      return;
+    }
     getCart();
   }, [isLogin]);
 
@@ -82,12 +85,15 @@ function App() {
       setIsInitialRender(false);
       return;
     }
+    if (!isLogin) {
+      return;
+    }
     updateCart();
   }, [cart]);
   return (
     <>
       <BrowserRouter>
-        <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+        <Header isLogin={isLogin} setIsLogin={setIsLogin} setCart={setCart} />
         <Routes>
           <Route path="/" element={<Home menu={menu} />} />
           <Route
