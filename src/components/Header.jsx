@@ -6,7 +6,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import { AvatarWithUserDropdown } from "./AvatarWithUserDropdown";
 import { jwtDecode } from "jwt-decode";
 
-const Header = ({ isLogin, setIsLogin }) => {
+const Header = ({ isLogin, setIsLogin, setCart }) => {
   return (
     <div className="navbar bg-orange-light z-10 relative">
       <div className="container py-2 ">
@@ -134,7 +134,11 @@ const Header = ({ isLogin, setIsLogin }) => {
             </Link>
           )}
 
-          <AvatarWithUserDropdown isLogin={isLogin} setIsLogin={setIsLogin} />
+          <AvatarWithUserDropdown
+            isLogin={isLogin}
+            setIsLogin={setIsLogin}
+            setCart={setCart}
+          />
         </div>
       </div>
     </div>

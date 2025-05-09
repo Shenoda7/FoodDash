@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import { GrUserAdmin } from "react-icons/gr";
 import { jwtDecode } from "jwt-decode";
 
-export function AvatarWithUserDropdown({ isLogin, setIsLogin }) {
+export function AvatarWithUserDropdown({ isLogin, setIsLogin, setCart }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const profileMenuItems = [
     {
@@ -45,6 +45,7 @@ export function AvatarWithUserDropdown({ isLogin, setIsLogin }) {
       func: () => {
         setIsLogin(false);
         localStorage.removeItem("token");
+        setCart([]);
       },
     },
   ];
