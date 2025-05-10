@@ -49,10 +49,11 @@ export default function TransactionsTable({ menu, setIsUpdate }) {
           });
           console.log(res.data);
           setIsAdding(false);
+          Swal.fire("Added!", "", "success");
         } catch (error) {
           console.log(error.message);
+          Swal.fire(error.message, "", "error");
         }
-        Swal.fire("Added!", "", "success");
         setIsUpdate(Date.now());
       } else if (result.isDenied) {
         Swal.fire("Dish Is Not Added", "", "warning");
@@ -200,7 +201,13 @@ export default function TransactionsTable({ menu, setIsUpdate }) {
                     dish.tag.toLowerCase().includes(search.toLowerCase())
                 )
                 .map((dish) => {
-                  return <TableElement dish={dish} setIsUpdate={setIsUpdate} />;
+                  return (
+                    <TableElement
+                      key={dish._id}
+                      dish={dish}
+                      setIsUpdate={setIsUpdate}
+                    />
+                  );
                 })}
             </tbody>
           </table>

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { formatUSD } from "../../util/formatter";
-const CartItem = ({ dishData, img, setCart }) => {
+const CartItem = ({ dishData, setCart }) => {
   const [quantity, setQuantity] = useState(dishData.quantity);
   const addOrder = () => {
     setQuantity((order) => order + 1);
     setCart((cart) => {
       return cart.map((item) =>
-        item.id === dishData.id
+        item._id === dishData._id
           ? { ...item, quantity: item.quantity + 1 }
           : item
       );
@@ -18,7 +18,7 @@ const CartItem = ({ dishData, img, setCart }) => {
       setQuantity((order) => order - 1);
       setCart((cart) => {
         return cart.map((item) =>
-          item.id === dishData.id
+          item._id === dishData._id
             ? { ...item, quantity: item.quantity - 1 }
             : item
         );
@@ -27,22 +27,23 @@ const CartItem = ({ dishData, img, setCart }) => {
 
     if (quantity === 0) {
       setCart((cart) => {
-        return cart.filter((item) => item.id !== dishData.id);
+        return cart.filter((item) => item._id !== dishData._id);
       });
     }
   };
 
   const removeFromCart = () => {
     setCart((cart) => {
-      return cart.filter((item) => item.id !== dishData.id);
+      return cart.filter((item) => item._id !== dishData._id);
     });
   };
+  console.log(dishData);
   return (
     <div
       className="flex justify-between items-center w-full sm:py-3 py-6 px-6 bg-white rounded-2xl
     shadow-lg flex-col sm:flex-row gap-3 sm:gap-0"
     >
-      <img src={img} alt="" className="w-28 h-28 sm:w-20 sm:h-20" />
+      <img src={dishData.img} alt="" className="w-28 h-28 sm:w-20 sm:h-20" />
       <p className="text-body-md sm:text-body-sm font-semibold">
         {dishData.name}
       </p>

@@ -11,7 +11,7 @@ const HomeProduct = ({ img, name }) => {
                   hover:shadow-xl
                   duration-300 ease-in-out"
       >
-        <img src={img} alt="product" className="p-5" />
+        <img src={img} alt="product" className="p-5 w-[250px] h-[250px]" />
       </div>
       <p className="text-center text-body-lg font-semibold">{name}</p>
       <Link

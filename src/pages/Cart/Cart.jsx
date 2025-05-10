@@ -3,7 +3,6 @@ import CardDetails from "./CardDetails.jsx";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
-import img from "../../assets/image 1.svg";
 
 const Cart = ({ cart, setCart }) => {
   const [total, setTotal] = useState(0);
@@ -26,10 +25,10 @@ const Cart = ({ cart, setCart }) => {
       >
         <div className="flex flex-col items-start w-11/12 xl:w-1/2 gap-y-11">
           <div className="flex border-b-[6px] py-5 border-dashed border-orange-dark w-full">
-            <Link to={"/menu"}>
+            <Link to={"/menu"} className="flex ">
               <MdKeyboardArrowLeft className="w-[30px] h-[30px]" />
+              <h2 className="font-semibold text-body-md">Shopping Continue</h2>
             </Link>
-            <h2 className="font-semibold text-body-md">Shopping Continue</h2>
           </div>
 
           <h3 className="text-body-md font-medium">Shopping Item</h3>
@@ -37,8 +36,7 @@ const Cart = ({ cart, setCart }) => {
             {cart.map((dishData) => {
               return (
                 <CartItem
-                  key={dishData.id}
-                  img={img}
+                  key={dishData._id}
                   dishData={dishData}
                   setCart={setCart}
                 />
