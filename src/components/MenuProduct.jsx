@@ -2,7 +2,7 @@ import { Rating } from "@mui/material";
 import React from "react";
 import Swal from "sweetalert2";
 
-const MenuProduct = ({ img, dishData, setCart }) => {
+const MenuProduct = ({ dishData, setCart }) => {
   const [numOfOrders, setNumOfOrders] = React.useState(0);
 
   const addOrder = () => {
@@ -25,10 +25,10 @@ const MenuProduct = ({ img, dishData, setCart }) => {
         timer: 1200,
       });
       setCart((cart) => {
-        const existingItem = cart.find((item) => item.id === dishData.id);
+        const existingItem = cart.find((item) => item._id === dishData._id);
         if (existingItem) {
           return cart.map((item) =>
-            item.id === dishData.id
+            item._id === dishData._id
               ? { ...item, quantity: item.quantity + numOfOrders }
               : item
           );
@@ -48,7 +48,11 @@ const MenuProduct = ({ img, dishData, setCart }) => {
     hover:shadow-xl
     duration-300 ease-in-out"
     >
-      <img src={img} alt="product" className="w-[250px] h-[250px]" />
+      <img
+        src={`${dishData.img}`}
+        alt="product"
+        className="w-[250px] h-[250px] rounded-full"
+      />
       <p className="text-body-md font-bold text-center whitespace-nowrap">
         {dishData.name}
       </p>

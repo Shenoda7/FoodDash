@@ -12,7 +12,7 @@ const cardData = {
 export default function CardDetails({ total, setCart }) {
   const [card, setCard] = useState(cardData);
   const [isValid, setIsValid] = useState("");
-  const checkName = /^[A-Za-z\s'-]{2,26}$/;
+  const checkName = /^[A-Za-z\s'-]{6,26}$/;
   const checkNumber = /^[0-9]{16}$/;
   const checkCVV = /^[0-9]{3}$/;
   const date = new Date();
@@ -22,12 +22,12 @@ export default function CardDetails({ total, setCart }) {
       setIsValid("invalid Name");
     } else if (!checkNumber.test(card.number)) {
       setIsValid("invalid Number");
-    } else if (!checkCVV.test(card.cvv)) {
-      setIsValid("invalid CVV");
     } else if (!card.expiration) {
       setIsValid("Card Expiration is required");
     } else if (new Date(card.expiration) < date) {
       setIsValid("Card Expired");
+    } else if (!checkCVV.test(card.cvv)) {
+      setIsValid("invalid CVV");
     } else {
       Swal.fire({
         title: "Order Placed!",
@@ -74,6 +74,7 @@ export default function CardDetails({ total, setCart }) {
             onChange={(e) =>
               setCard({ ...card, number: e.target.value.replace(/\s/g, "") })
             }
+            placeholder="1234 5678 9012 3456"
           ></input>
         </div>
         <div className="flex flex-col sm:flex-row sm:gap-2 gap-6 items-center">
@@ -93,6 +94,7 @@ export default function CardDetails({ total, setCart }) {
               className="w-full text-body-sm text-black py-3 px-4 rounded-md outline-8 border-none outline-orange-mid"
               value={card.cvv}
               onChange={(e) => setCard({ ...card, cvv: e.target.value })}
+              placeholder="123"
             ></input>
           </div>
         </div>

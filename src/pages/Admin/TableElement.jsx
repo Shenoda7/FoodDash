@@ -39,10 +39,11 @@ const TableElement = ({ dish, setIsUpdate }) => {
           });
           console.log(res.data);
           setIsEdit(false);
+          Swal.fire("Saved!", "", "success");
         } catch (error) {
           console.log(error.message);
+          Swal.fire(error.message, "", "error");
         }
-        Swal.fire("Saved!", "", "success");
         setIsUpdate(Date.now());
       } else if (result.isDenied) {
         Swal.fire("Changes are not saved", "", "info");
@@ -122,7 +123,7 @@ const TableElement = ({ dish, setIsUpdate }) => {
             <Avatar
               src={dish.img}
               alt={dish.name}
-              size="lg"
+              size="xxl"
               className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
             />
           )}

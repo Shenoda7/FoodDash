@@ -1,5 +1,4 @@
 import heroImage from "../assets/Hero-img.svg";
-import dishImg from "../assets/image 1.svg";
 import fastDelivery from "../assets/fast-delivery.svg";
 import fresh from "../assets/fresh.svg";
 import freeDelivery from "../assets/freeDelivery.svg";
@@ -110,7 +109,7 @@ export default function Home({ menu }) {
                 .filter((dish) => dish.tag === "popular")
                 .slice(0, 3)
                 .map((dish) => (
-                  <HomeProduct key={dish.id} img={dishImg} name={dish.name} />
+                  <HomeProduct key={dish._id} img={dish.img} name={dish.name} />
                 ))
             ) : (
               <span className="loading loading-spinner loading-lg text-orange-mid"></span>
@@ -125,7 +124,7 @@ export default function Home({ menu }) {
           <Rerousel itemRef={itemRef} interval={2000}>
             {menu.map((dish) => (
               <div
-                key={dish.id}
+                key={dish._id}
                 ref={itemRef}
                 className="flex justify-center items-center gap-x-6 md:w-[30rem] w-full"
               >
@@ -167,7 +166,7 @@ export default function Home({ menu }) {
                 .filter((dish) => dish.tag === "menu")
                 .slice(0, 3)
                 .map((dish) => (
-                  <HomeProduct key={dish.id} img={dishImg} name={dish.name} />
+                  <HomeProduct key={dish._id} img={dish.img} name={dish.name} />
                 ))
             ) : (
               <span className="loading loading-spinner loading-lg text-orange-mid"></span>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import MenuProduct from "./../components/MenuProduct";
-import dish1 from "../assets/image 1.svg";
 import pattern from "../assets/food-pattern.png";
 const Menu = ({ menu, setCart }) => {
   const [minPrice, setMinPrice] = useState(0);
@@ -17,8 +16,8 @@ const Menu = ({ menu, setCart }) => {
       .map((dishData) => {
         return (
           <MenuProduct
-            key={dishData.id}
-            img={dish1}
+            key={dishData._id}
+            // img={dish1}
             dishData={dishData}
             setCart={setCart}
           />

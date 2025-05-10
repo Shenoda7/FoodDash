@@ -58,7 +58,7 @@ function App() {
       method: "PUT",
       data: {
         cart: cart,
-        id: jwtDecode(localStorage.getItem("token")).id,
+        id: jwtDecode(localStorage.getItem("token"))._id,
       },
     })
       .then((res) => {
