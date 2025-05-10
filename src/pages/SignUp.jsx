@@ -90,7 +90,7 @@ const SignUp = () => {
               value={user.username}
               onChange={(e) => setUser({ ...user, username: e.target.value })}
               className="min-w-72 lg:min-w-96 w-1/2   py-2 text-body-md font-semibold text-black bg-transparent border-b-2 border-grey-light focus:outline-none focus:border-orange-dark"
-              placeholder="Ahmed_Mamdoh"
+              placeholder="Thomas_Zakaria"
               required
             />
           </div>
