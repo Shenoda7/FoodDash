@@ -22,7 +22,7 @@ function App() {
   const [isUpdate, setIsUpdate] = useState(false);
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [isLogin, setIsLogin] = useState(
-    localStorage.getItem("token") ? true : false
+    localStorage.getItem("token") ? true : false,
   );
   function getMenu() {
     const url = import.meta.env.VITE_API_URL;
@@ -90,6 +90,14 @@ function App() {
     }
     updateCart();
   }, [cart]);
+
+  //know if user is admin
+  let token = localStorage.getItem("token");
+  let role = null;
+
+  if (token) {
+    role = jwtDecode(token).role;
+  }
   return (
     <>
       <BrowserRouter>
@@ -97,7 +105,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home menu={menu} />} />
           <Route
-            path="/admin"
+            path={role === "admin" ? "/admin" : ""}
             element={<AdminPanel menu={menu} setIsUpdate={setIsUpdate} />}
           ></Route>
           <Route
