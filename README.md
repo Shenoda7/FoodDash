@@ -9,9 +9,9 @@
 - 🔥 Responsive user interface built with Tailwind CSS
 - 🧩 Modular, component-based React architecture
 - 🍱 Dynamic menu rendering with reusable item components
-- 🛒 Cart functionality (in progress)
-- 🔐 User authentication system (coming soon)
-- 🗃️ Backend integration with Node.js (planned)
+- 🛒 Cart functionality 
+- 🔐 User authentication system 
+- 🗃️ Backend integration with Node.js 
 
 ---
 
