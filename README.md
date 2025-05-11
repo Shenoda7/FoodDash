@@ -18,14 +18,13 @@
 ## 🛠️ Tech Stack
 
 - **Front-End:** React, Tailwind CSS, JavaScript (ES6+)
-- **Back-End (Planned):** Node.js
+- **Back-End:** Node.js
 - **Version Control:** Git, GitHub
 
 ---
 
 ## 📦 Installation
 
-> _Note: The project is currently in development, but you can run the front-end locally._
 
 ```bash
 # Clone the repository
